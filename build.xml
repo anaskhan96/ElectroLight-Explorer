@@ -35,4 +35,7 @@
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
   </target>
+  <target name="test" description="Tests if compilation worked">
+    <echo args="todo"/>
+  </target>
 </project>
