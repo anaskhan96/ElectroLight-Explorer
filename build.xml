@@ -8,8 +8,6 @@
   <property name="dist" location="dist"/>
 
   <target name="init">
-    <!-- Create the time stamp -->
-    <tstamp/>
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build}"/>
   </target>
@@ -25,7 +23,7 @@
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}/lib"/>
 
-    <jar jarfile="${dist}/lib/ElectroLight-Explorer-${DSTAMP}.jar" basedir="${build}"/>
+    <jar jarfile="${dist}/lib/ElectroLight-Explorer.jar" basedir="${build}"/>
   </target>
 
   <target name="clean"
@@ -38,7 +36,7 @@
     <fail message="Files are missing.">
     <condition>
         <not>
-            <available file="${dist}/lib/ElectroLight-Explorer-${DSTAMP}.jar"/>
+            <available file="${dist}/lib/ElectroLight-Explorer.jar"/>
         </not>
     </condition>
 </fail>
