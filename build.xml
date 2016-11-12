@@ -25,7 +25,6 @@
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}/lib"/>
 
-    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
     <jar jarfile="${dist}/lib/ElectroLight-Explorer-${DSTAMP}.jar" basedir="${build}"/>
   </target>
 
@@ -36,6 +35,6 @@
     <delete dir="${dist}"/>
   </target>
   <target name="test" description="Tests if compilation worked">
-    <echo args="todo"/>
+    <echo message="todo"/>
   </target>
 </project>
