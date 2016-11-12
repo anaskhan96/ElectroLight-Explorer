@@ -35,14 +35,7 @@
     <delete dir="${dist}"/>
   </target>
   <target name="test" description="Tests if compilation worked">
-    <fail message="Files are missing.">
-    <condition>
-        <not>
-            <resourcecount count="1">
-                <fileset id="fs" dir="${dist}" includes="/lib/ElectroLight-Explorer-${DSTAMP}.jar"/>
-            </resourcecount>
-        </not>
-    </condition>
-    </fail>
+    <available file="${dist}/lib/ElectroLight-Explorer-${DSTAMP}.jar" property="end.present"/>
+    <fail message="Files are missing." if="end.present"/>
   </target>
 </project>
