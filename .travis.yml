@@ -4,6 +4,12 @@ jdk:
   - oraclejdk8
   - oraclejdk7
   - openjdk6
-os:
-  - linux
-  - windows
+deploy:
+  provider: releases
+  api_key: "648f9c5cbc4bb022e61759284ba02760a9c58f61"
+  file: "dist/lib/ElectroLight-Explorer.jar"
+  skip_cleanup: true
+  on:
+    tags: true
+
+
