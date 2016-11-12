@@ -38,7 +38,7 @@
     <fail message="Files are missing.">
     <condition>
         <not>
-            <resourcecount count="2">
+            <resourcecount count="1">
                 <fileset id="fs" dir="${dist}" includes="/lib/ElectroLight-Explorer-${DSTAMP}.jar"/>
             </resourcecount>
         </not>
