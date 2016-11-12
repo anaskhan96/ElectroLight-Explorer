@@ -35,7 +35,12 @@
     <delete dir="${dist}"/>
   </target>
   <target name="test" description="Tests if compilation worked">
-    <available file="${dist}/lib/ElectroLight-Explorer-${DSTAMP}.jar" property="end.present"/>
-    <fail message="Files are missing." if="end.present"/>
+    <fail message="Files are missing.">
+    <condition>
+        <not>
+            <available file="${dist}/lib/ElectroLight-Explorer-${DSTAMP}.jar"/>
+        </not>
+    </condition>
+</fail>
   </target>
 </project>
