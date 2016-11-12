@@ -6,7 +6,7 @@ jdk:
   - openjdk6
 deploy:
   provider: releases
-  api_key: "7d5768ecd758ec990ba9a00827e661bb26c9b901"
+  api_key: "KEY"
   file: "dist/lib/ElectroLight-Explorer.jar"
   skip_cleanup: true
   on:
