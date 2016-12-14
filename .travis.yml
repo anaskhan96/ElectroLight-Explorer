@@ -12,4 +12,3 @@ deploy:
   file: /home/travis/build/Electro-Light/ElectroLight-Explorer/dist/lib/ElectroLight-Explorer.jar
   on:
     repo: Electro-Light/ElectroLight-Explorer
-    tags: true
