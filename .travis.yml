@@ -1,15 +1,13 @@
 language: java
 install: ant dist
 jdk:
-  - oraclejdk8
-  - oraclejdk7
-  - openjdk6
+- oraclejdk8
+- oraclejdk7
+- openjdk6
 deploy:
   provider: releases
-  api_key: "KEY"
-  file: "dist/lib/ElectroLight-Explorer.jar"
-  skip_cleanup: true
+  api_key:
+    secure: e9qSt3lURR27+TBBIiCnQ3Y/nraQ4O9RuN+RxbCblEDEv3luoBfcXN3HmV0hUtjGTUD/G/Y1WhqL3ABHsE9bOTHG5B5TTKAGhgGC+sAb7IPJmKu0Dgrx06sw+pWhAQMs/BeBQX3ymr1qcDW74qd8qc3lbUYIIiOFkx9sy5OwQ7cXH2/BnMMeuMBgljduORRnYIuj4PlX4JFupf8yelzW88kejLrIBpELvPcnvCtt6kSh5FUlfWfUHwYP4A7+VQOuHLM0sBl6TrUsxq5zfnZyxcKHvDGpTXoxoDtLrhiBdI6KUOKTV5erJjvPwRJCvZYXEH4hScoakG3YcZuncOYNqvI81JTAUCMe1fXuFwhbEJr13d6+J/7XyVOC7AWBBjzI5nQEsS1H3ftO40xbqj14oL0TC2CYPH4QJaDTe2sP+DxcX+4y8hRMO0ZgSOfg5Bv3DwpNkuPKN64cdLeH+pzaL+YlvnpV9JyMgnemprk1Sp1BM3DXLTmvObEN0fVI90NY+IpdJplIMM7qZ5um1Why5LU06ticnHfsXHLateseWFfxFNApYJTJEh2jU7Djd7RgsxwzyCMP8eTkaIv5WMmPLwfHIUAtTMeW4n/gqhjOiT35H7YaX3h8Ii6YMBBBCvXT4lFSCJpvaCKPithszKOIjmh4OALfHW/1399wJ/Zi6II=
+  file: dist/lib/ElectroLight-Explorer.jar
   on:
-    tags: true
-
-
+    repo: Electro-Light/ElectroLight-Explorer
