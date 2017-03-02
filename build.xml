@@ -23,7 +23,11 @@
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}/lib"/>
 
-    <jar jarfile="${dist}/lib/ElectroLight-Explorer.jar" basedir="${build}"/>
+    <jar jarfile="${dist}/lib/ElectroLight-Explorer.jar" basedir="${build}">
+      <manifest>
+        <attribute name="Main-Class" value="org.ElectroLight.Explorer.Main"/>
+      </manifest>
+    </jar>
   </target>
 
   <target name="clean"
