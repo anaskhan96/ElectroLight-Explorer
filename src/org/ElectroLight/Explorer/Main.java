@@ -34,7 +34,7 @@ public class Main {
 			JScrollPane scroll = new JScrollPane();
 			scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 			f.add(scroll);
-			scroll.setViewportView(new FileView(new File("C:/")));
+			scroll.setViewportView(new FileView(File.listRoots()[0]));
 			f.pack();
 			f.addWindowListener(new WindowListener() {
 
