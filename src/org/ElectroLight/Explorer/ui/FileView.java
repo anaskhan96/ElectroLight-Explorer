@@ -5,6 +5,8 @@ package org.ElectroLight.Explorer.ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +39,49 @@ public class FileView extends JComponent implements ImageObserver {
 		if (!folder.isDirectory()) {
 			throw new IOException("Given file isn't a folder.");
 		}
+		loadFiles();
+		
+		this.addMouseListener(new MouseListener() {
 
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() != MouseEvent.BUTTON1)
+					return;
+				Logger.getLogger("Debug").fine("X: " + e.getX() + ", Y: " + e.getY());
+			}
+		});
+
+	}
+
+	public void loadFiles() throws IOException {
+		if (!folder.isDirectory()) {
+			throw new IOException("Given file isn't a folder.");
+		}
+		icons = new ArrayList<Icon>();
 		for (File f : folder.listFiles()) {
 			Icon i = new Icon();
 			i.setName(f.getName());
@@ -51,9 +95,8 @@ public class FileView extends JComponent implements ImageObserver {
 			}
 			icons.add(i);
 		}
-
 	}
-
+	
 	public ViewType getViewType() {
 		return viewType;
 	}
@@ -85,6 +128,7 @@ public class FileView extends JComponent implements ImageObserver {
 			x += 0;
 			y += 20;
 		}
+		setSize(y, x);
 	}
 
 	public enum ViewType {
