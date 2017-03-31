@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
@@ -36,6 +37,12 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			SETTINGS.load(new FileInputStream(new File("./settings")));
+			if (SETTINGS.getProperty("debug").equals("true")) {
+				if (!Logger.getLogger("Debug").isLoggable(Level.ALL)) {
+					System.err.println("Debug is enabled but logger isn't.");
+					System.exit(-1);
+				}
+			}
 
 			JFrame f = new JFrame("ElectroLight Explorer");
 			JScrollPane scroll = new JScrollPane();

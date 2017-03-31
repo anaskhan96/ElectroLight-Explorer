@@ -81,6 +81,7 @@ public class FileView extends JComponent implements ImageObserver {
 		if (!folder.isDirectory()) {
 			throw new IOException("Given file isn't a folder.");
 		}
+		
 		icons = new ArrayList<Icon>();
 		for (File f : folder.listFiles()) {
 			Icon i = new Icon();
