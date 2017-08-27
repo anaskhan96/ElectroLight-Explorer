@@ -52,7 +52,7 @@ public class FileView extends JComponent implements ImageObserver {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				System.out.println("Key typed: '" + e.getKeyChar() + "'");
+				Logger.getLogger("Debug").info("Key typed: '" + e.getKeyChar() + "'");
 				if (e.getKeyChar() == 'd') {
 					JPopupMenu pop = new JPopupMenu();
 					JMenuItem itmSizesStats = new JMenuItem("Files sizes statistics");
@@ -101,7 +101,7 @@ public class FileView extends JComponent implements ImageObserver {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("mousePressed | BTN: " + e.getButton() + "X,Y" + e.getX() + "," + e.getY());
+				Logger.getLogger("Debug").info("mousePressed | BTN: " + e.getButton() + "X,Y" + e.getX() + "," + e.getY());
 			}
 
 			@Override
@@ -118,7 +118,7 @@ public class FileView extends JComponent implements ImageObserver {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("mouseClicked | BTN: " + e.getButton() + "X,Y" + e.getX() + "," + e.getY());
+				Logger.getLogger("Debug").info("mouseClicked | BTN: " + e.getButton() + "X,Y" + e.getX() + "," + e.getY());
 				if (e.getButton() == MouseEvent.BUTTON2) {
 					JPopupMenu pop = new JPopupMenu();
 					JMenuItem itmStats = new JMenuItem("Statistics");
@@ -139,7 +139,7 @@ public class FileView extends JComponent implements ImageObserver {
 	}
 
 	public void loadFiles() throws IOException {
-		System.out.println("(Re)loading files");
+		Logger.getLogger("Debug").info("(Re)loading files");
 		if (!folder.isDirectory()) {
 			throw new IOException("Given file isn't a folder.");
 		}

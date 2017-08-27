@@ -38,6 +38,7 @@ public class Main {
 		try {
 			SETTINGS.load(new FileInputStream(new File("./settings")));
 			if (SETTINGS.getProperty("debug").equals("true")) {
+				Logger.getLogger("Debug").setLevel(Level.ALL);
 				if (!Logger.getLogger("Debug").isLoggable(Level.ALL)) {
 					System.err.println("Debug is enabled but logger isn't.");
 					System.exit(-1);
