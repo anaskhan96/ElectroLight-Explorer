@@ -5,6 +5,10 @@ package org.ElectroLight.Explorer.ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.ImageObserver;
@@ -17,6 +21,8 @@ import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 import org.ElectroLight.Explorer.Main;
 
@@ -35,13 +41,57 @@ public class FileView extends JComponent implements ImageObserver {
 
 	public FileView(File folder) throws IOException {
 		super();
+		setFocusable(true);
+		
 		this.setFolder(folder);
 		if (!folder.isDirectory()) {
 			throw new IOException("Given file isn't a folder.");
 		}
 		loadFiles();
-		
-		this.addMouseListener(new MouseListener() {
+		addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				System.out.println("Key typed: '" + e.getKeyChar() + "'");
+				if (e.getKeyChar() == 'd') {
+					JPopupMenu pop = new JPopupMenu();
+					JMenuItem itmSizesStats = new JMenuItem("Files sizes statistics");
+					itmSizesStats.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							new StatsView(getFolder().toURI(), StatsViewType.FILE_SIZES);
+						}
+					});
+					pop.add(itmSizesStats);
+					
+					JMenuItem itmExtStats = new JMenuItem("Extentions statistics");
+					itmExtStats.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							new StatsView(getFolder().toURI(), StatsViewType.EXTENSIONS);
+						}
+					});
+					pop.add(itmExtStats);
+					
+					pop.show(e.getComponent(), e.getComponent().getX(), e.getComponent().getY());
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -51,8 +101,7 @@ public class FileView extends JComponent implements ImageObserver {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
+				System.out.println("mousePressed | BTN: " + e.getButton() + "X,Y" + e.getX() + "," + e.getY());
 			}
 
 			@Override
@@ -69,8 +118,20 @@ public class FileView extends JComponent implements ImageObserver {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (e.getButton() != MouseEvent.BUTTON1)
-					return;
+				System.out.println("mouseClicked | BTN: " + e.getButton() + "X,Y" + e.getX() + "," + e.getY());
+				if (e.getButton() == MouseEvent.BUTTON2) {
+					JPopupMenu pop = new JPopupMenu();
+					JMenuItem itmStats = new JMenuItem("Statistics");
+					itmStats.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							new StatsView(getFolder().toURI(), StatsViewType.FILE_SIZES);
+						}
+					});
+					pop.add(itmStats);
+					pop.show(e.getComponent(), e.getXOnScreen(), e.getYOnScreen());
+				}
 				Logger.getLogger("Debug").fine("X: " + e.getX() + ", Y: " + e.getY());
 			}
 		});
@@ -78,10 +139,11 @@ public class FileView extends JComponent implements ImageObserver {
 	}
 
 	public void loadFiles() throws IOException {
+		System.out.println("(Re)loading files");
 		if (!folder.isDirectory()) {
 			throw new IOException("Given file isn't a folder.");
 		}
-		
+
 		icons = new ArrayList<Icon>();
 		for (File f : folder.listFiles()) {
 			Icon i = new Icon();
@@ -97,7 +159,7 @@ public class FileView extends JComponent implements ImageObserver {
 			icons.add(i);
 		}
 	}
-	
+
 	public ViewType getViewType() {
 		return viewType;
 	}

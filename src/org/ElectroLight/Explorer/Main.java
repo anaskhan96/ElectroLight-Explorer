@@ -47,6 +47,8 @@ public class Main {
 			JFrame f = new JFrame("ElectroLight Explorer");
 			JScrollPane scroll = new JScrollPane();
 			FileView fileView = new FileView(File.listRoots()[0]);
+			fileView.setFocusable(true);
+			fileView.setFocusCycleRoot(true);
 			JTextField addressBar = new JTextField(File.listRoots()[0].getPath());
 			addressBar.addKeyListener(new KeyListener() {
 
