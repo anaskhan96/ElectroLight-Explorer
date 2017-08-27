@@ -33,7 +33,10 @@ public class Main {
 	public static final ImageIcon IMG_IMG = new ImageIcon("./famfamfam_silk_icons_v013/icons/photo.png");
 
 	public static final Properties SETTINGS = new Properties();
-
+	
+	private static JTextField addressBar;
+	private static FileView fileView;
+	
 	public static void main(String[] args) {
 		try {
 			SETTINGS.load(new FileInputStream(new File("./settings")));
@@ -47,10 +50,10 @@ public class Main {
 
 			JFrame f = new JFrame("ElectroLight Explorer");
 			JScrollPane scroll = new JScrollPane();
-			FileView fileView = new FileView(File.listRoots()[0]);
+			fileView = new FileView(File.listRoots()[0]);
 			fileView.setFocusable(true);
 			fileView.setFocusCycleRoot(true);
-			JTextField addressBar = new JTextField(File.listRoots()[0].getPath());
+			addressBar = new JTextField(File.listRoots()[0].getPath());
 			addressBar.addKeyListener(new KeyListener() {
 
 				@Override
