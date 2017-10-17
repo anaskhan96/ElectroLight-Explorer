@@ -28,7 +28,7 @@ import org.ElectroLight.Explorer.ui.FileView;
  *
  */
 public class Main {
-	public static final ImageIcon FOLDER_IMG = new ImageIcon("./famfamfam_silk_icolns_v013/icons/folder.png");
+	public static final ImageIcon FOLDER_IMG = new ImageIcon("./famfamfam_silk_icons_v013/icons/folder.png");
 	public static final ImageIcon NO_ICON_IMG = new ImageIcon("./famfamfam_silk_icons_v013/icons/page_white_text.png");
 	public static final ImageIcon IMG_IMG = new ImageIcon("./famfamfam_silk_icons_v013/icons/photo.png");
 
