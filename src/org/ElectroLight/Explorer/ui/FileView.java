@@ -183,7 +183,7 @@ public class FileView extends JComponent implements ImageObserver {
 		int x = 15;
 		int y = 15;
 		for (Icon i : icons) {
-			Logger.getLogger("Debug").fine(
+			Logger.getLogger("Debug").info(
 					"Drawing icon with image " + i.getIcon().toString() + " and with name \"" + i.getName() + "\"");
 			g.setColor(Color.black);
 			g.drawString(i.getName(), x + 16, y + 10);
