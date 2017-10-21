@@ -1,5 +1,6 @@
 language: java
 install: ant dist
+dist: precise
 jdk:
 - oraclejdk8
 - oraclejdk7
